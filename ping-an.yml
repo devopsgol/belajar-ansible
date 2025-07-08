@@ -1,6 +1,9 @@
 ---
-- name: Ping localhost
-  hosts: localhost
+- name: ping-an
+  hosts: an-loki
+  become: true
+  become_method: sudo
+  become_user: adi
   gather_facts: no
 
   tasks:
