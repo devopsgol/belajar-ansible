@@ -1,6 +1,6 @@
 ---
 - name: Apache2
-  hosts: apache
+  hosts: an-loki
   gather_facts: no
   tasks:
     - name: install apache2
