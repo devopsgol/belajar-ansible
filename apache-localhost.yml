@@ -1,7 +1,10 @@
 ---
 - name: Apache2
   hosts: an-loki
-  remote_user: root
+  become: true
+  become_method: sudo
+  become_user: adi
+  become_flags: '-s /bin/sh'
   gather_facts: no
   tasks:
     - name: install apache2
