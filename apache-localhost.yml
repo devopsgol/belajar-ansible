@@ -6,13 +6,22 @@
   become_user: adi
   gather_facts: no
   tasks:
-    - name: install apache2
-      apt:
-        name: apache2
-        update_cache: yes
-        state: latest
-  handlers:
-    - name: restart apache2
-      service:
-        name: apache2
-        state: restarted
+  - name: System details
+    debug:
+      msg: "{{ ansible_facts['lsb']['release'] }}"
+
+  - name: ubuntu 18
+    shell: echo "hello 18"
+    register: ub18
+    when: ansible_facts['lsb']['release'] == "18.04"
+
+  - debug:
+     msg: "{{ ub18 }}"
+
+  - name: ubuntu 20
+    shell: echo "hello 20"
+    register: ub20
+    when: ansible_facts['lsb']['release'] == "20.04"
+
+  - debug:
+     msg: "{{ ub20 }}"
