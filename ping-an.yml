@@ -1,7 +1,9 @@
----
-- name: ping-an
-  hosts: all
-  gather_facts: false
+- name: Install Ansible Collections
+  hosts: localhost
+  connection: local
   tasks:
-    - name: Ping instance
-      ping:
+    - name: Install Autobase for PostgreSQL® collection
+      ansible.builtin.ansible_galaxy:
+        command: install
+        type: collection
+        name: vitabaks.autobase
