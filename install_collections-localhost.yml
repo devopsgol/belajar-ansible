@@ -1,0 +1,10 @@
+---
+- name: Install Ansible Collections
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Install Autobase for PostgreSQL® collection
+      ansible.builtin.ansible_galaxy:
+        command: install
+        type: collection
+        name: amazon.aws
