@@ -1,0 +1,18 @@
+---
+- name: Deploy VM di OpenStack
+  hosts: all
+  gather_facts: no
+  collections:
+    - openstack.cloud
+
+  tasks:
+    - name: Buat instance
+      openstack.cloud.server:
+        cloud: openstack
+        state: present
+        name: test-an
+        image: "ubuntu20-04"
+        flavor: standard-2-2
+        network: public-prod
+        key_name: mykey
+        security_groups: ['default']
